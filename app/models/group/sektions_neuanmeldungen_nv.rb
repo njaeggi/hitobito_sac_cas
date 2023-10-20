@@ -13,8 +13,17 @@ class Group::SektionsNeuanmeldungenNv < ::Group
   class Neuanmeldung < ::Role
     include ::SacCas::RoleBeitragskategorie
 
+    self.convert_to_role = Group::SektionsMitglieder::Mitglied.sti_name
     self.permissions = []
     self.basic_permissions_only = true
+
+    def convert!
+      Role.transaction do
+        target_group = group.parent.children.find_by!(type: Group::SektionsMitglieder)
+        target_group.roles.create!(person: person, type: convert_to_role, beitragskategorie: beitragskategorie)
+        destroy!
+      end
+    end
   end
 
   roles Neuanmeldung

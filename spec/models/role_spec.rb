@@ -59,4 +59,15 @@ describe Role do
     end
   end
 
+  describe Group::SektionsNeuanmeldungenNv::Neuanmeldung do
+
+    it "convert! destroys self and creates another role in another group" do
+      role = Fabricate(Group::SektionsNeuanmeldungenNv::Neuanmeldung.sti_name, group: bluemlisalp_neuanmeldungen_nv, beitragskategorie: :einzel)
+       expect do
+        role.convert!
+      end.not_to change { Role.count }
+    end
+
+  end
+
 end
