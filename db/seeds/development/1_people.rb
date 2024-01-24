@@ -84,6 +84,38 @@ class SacCasPersonSeeder < PersonSeeder
     child
   end
 
+  # for mitglieder roles, from/to has to be set to be valid
+  def update_mitglieder_role_dates
+    update_role_dates(Group::SektionsMitglieder::Mitglied)
+    update_role_dates(Group::SektionsMitglieder::MitgliedZusatzsektion) do |r|
+      create_stammsektion_role(r)
+    end
+  end
+
+  private
+
+  def create_stammsektion_role(zusatzsektion_role)
+    return if zusatzsektion_role.person.roles.any? do |r|
+      r.type == Group::SektionsMitglieder::Mitglied
+    end
+
+    sektion = zusatzsektion_role.group
+    mitglieder_groups = Group::SektionsMitglieder.where.not(id: sektion.id)
+    seed_role(zusatzsektion_role.person,
+              mitglieder_groups.sample,
+              Group::SektionsMitglieder::Mitglied,
+              delete_on: Date.today.end_of_year)
+  end
+
+  def update_role_dates(role_class)
+    role_class.find_each do |r|
+      yield(r) if block_given?
+      person_age = r.person.years
+      created_at = (person_age - 6).years.ago
+      r.update!(created_at: created_at,
+        delete_on: Date.today.end_of_year)
+    end
+  end
 end
 
 puzzlers = [
@@ -116,6 +148,7 @@ seeder = SacCasPersonSeeder.new
 
 seeder.seed_all_roles
 seeder.seed_families
+seeder.update_mitglieder_role_dates
 
 geschaeftsstelle = Group::Geschaeftsstelle.first
 devs.each do |name, email|
