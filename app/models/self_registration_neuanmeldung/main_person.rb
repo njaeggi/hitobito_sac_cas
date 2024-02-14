@@ -28,6 +28,8 @@ class SelfRegistrationNeuanmeldung::MainPerson < SelfRegistrationNeuanmeldung::P
 
   validate :assert_phone_number
 
+  MINIMUM_YEARS_FOR_HOUSEHOLD = 23
+
   def self.model_name
     ActiveModel::Name.new(SelfRegistration::MainPerson, nil)
   end
@@ -41,6 +43,10 @@ class SelfRegistrationNeuanmeldung::MainPerson < SelfRegistrationNeuanmeldung::P
       p.tag_list.add 'newsletter' if newsletter
       p.tag_list.add 'promocode' if promocode
     end
+  end
+
+  def too_young_for_household?
+    person.years && person.years < MINIMUM_YEARS_FOR_HOUSEHOLD
   end
 
   private

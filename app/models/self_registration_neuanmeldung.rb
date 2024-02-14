@@ -11,6 +11,8 @@ class SelfRegistrationNeuanmeldung < SelfRegistration
 
   self.partials = [:main_email, :neuanmeldung_main_person, :household, :supplements]
 
+  delegate :too_young_for_household?, to: :main_person
+
   def self.model_name
     ActiveModel::Name.new(SelfRegistration, nil)
   end
@@ -19,6 +21,12 @@ class SelfRegistrationNeuanmeldung < SelfRegistration
     super
     @housemates_attributes = extract_attrs(params, :housemates_attributes, array: true).to_a
     @supplements_attributes = extract_attrs(params, :supplements_attributes)
+  end
+
+  def partials
+    return self.class.partials - [:household] if too_young_for_household?
+
+    super
   end
 
   def save!
@@ -74,6 +82,7 @@ class SelfRegistrationNeuanmeldung < SelfRegistration
   def build_housemates
     @housemates_attributes.map do |attrs|
       next if attrs[:_destroy] == '1'
+      next if too_young_for_household?
 
       build_person(attrs, Housemate)
     end.compact
