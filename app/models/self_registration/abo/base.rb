@@ -5,13 +5,10 @@
 #  or later. See the COPYING file at the top-level directory or at
 #  https://github.com/hitobito/hitobito_sac_cas.
 
-class SelfRegistration
-  class AboTourenPortal < Base
-    self.shared_partial = :abo_infos
-    self.main_person_class = SelfRegistration::Abo::MainPerson
 
-    def dummy_costs
-      [OpenStruct.new(amount: 45)]
-    end
+class SelfRegistration::Abo::Base < SelfRegistration
+
+  def main_person
+    @main_person ||= build_person(@main_person_attributes, SelfRegistration::Abo::)
   end
 end
