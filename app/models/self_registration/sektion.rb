@@ -51,10 +51,6 @@ class SelfRegistration::Sektion < SelfRegistration::Base
     housemates.all?(&:valid?)
   end
 
-  def main_email_valid?
-    main_person.email.present?
-  end
-
   def supplements_valid?
     supplements.valid?
   end
@@ -97,6 +93,4 @@ class SelfRegistration::Sektion < SelfRegistration::Base
     years = ::Person.new(birthday: @main_person_attributes[:birthday]).years
     years && years <= MIN_ADULT_YEARS
   end
-
-  alias neuanmeldung_main_person_valid? main_person_valid?
 end
