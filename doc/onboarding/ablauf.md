@@ -1,10 +1,20 @@
-# Onboarding
+# Onboarding Prozess
 
 ![Ablaufdiagramm](ablaufdiagramm.svg)
 
 In dem Ablaufdiagramm sind alle Schritte durch runde schwarze Icons und entsprechende Bezeichnungen repräsentiert. Diese Icons und Bezeichnungen stehen jeweils für einen spezifischen Schritt im Onboarding-Prozess.
 
 ### Legende
+| Icon | Bedeutung |
+|------|------|
+|  Zahnrad  | Schritte, welche das System automatisch macht. |
+|  Einzelne Person  | Schritte, welche von einem Aktör manuell durchgeführt werden. |
+|  Zwei Personen  | Gruppen, in welche die neu regstrierte Person verschoben wird. |
+| Häkchen | Die Bedingung wurde erfüllt. |
+| Briefumschlag | Es wird eine Mail verschickt |
+
+
+
 
 
 ### User-Schritte
