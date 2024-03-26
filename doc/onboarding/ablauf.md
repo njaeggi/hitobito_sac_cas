@@ -1,6 +1,6 @@
 # Onboarding Prozess
 
-![Ablaufdiagramm](ablaufdiagramm.svg)
+![Ablaufdiagramm](ablaufdiagramm.drawio.png)
 
 In dem Ablaufdiagramm sind alle Schritte durch runde schwarze Icons und entsprechende Bezeichnungen repräsentiert. Diese Icons und Bezeichnungen stehen jeweils für einen spezifischen Schritt im Onboarding-Prozess.
 
@@ -25,11 +25,13 @@ In dem Ablaufdiagramm sind alle Schritte durch runde schwarze Icons und entsprec
 
 ### Automatische-Schritte
 - A1: Die neue Person wird auf ein bereits vorhandenes Duplikat überprüft. Falls kein Duplikat existiert, hat die Person das Kriterium erfüllt.
-- A2: Das System überprüft ob die gewünschte Sektion eine manuelle Freigabe von Personen verlangt.
-- A3 (Wird ggf. übersprungen): Die Person wurde in die Gruppe **Neuanmeldungen (zur Freigabe)** hinzugefügt
-- A4: Person wird in Gruppe **Neuanmeldungen** verschoben, diese Gruppe dient als Pufferliste
-- A5: Es wird eine Rechnung in Abacus erstellt
-- A6: Alle Kriterien werden im Hintergrund immer wieder überprüft, bis diese alle erfüllt sind. Sobald alle Kriterien erfüllt sind, wird die Person als Mitglied aufgenommen und der Onboarding Prozess endet hier. Genaue Angaben zu den Bedingungen findet man bei B1, B2 und B3
+- A2: Person wird in Gruppe **Duplikate** verschoben
+- A3: Das System überprüft ob die gewünschte Sektion eine manuelle Freigabe von Personen verlangt.
+- A4 (Wird ggf. übersprungen): Die Person wurde in die Gruppe **Neuanmeldungen (zur Freigabe)** hinzugefügt
+- A5: Person wird in Gruppe **Neuanmeldungen** verschoben, diese Gruppe dient als Pufferliste
+- A6: Es wird eine Rechnung in Abacus erstellt
+- A7: Rechnung kann über den Link in Hitobito geöffnet werden
+- A8: Alle Kriterien werden im Hintergrund immer wieder überprüft, bis diese alle erfüllt sind. Sobald alle Kriterien erfüllt sind, wird die Person als Mitglied aufgenommen und der Onboarding Prozess endet hier. Genaue Angaben zu den Bedingungen findet man bei B1, B2 und B3
 
 ### Sektions-Mitgliederverwaltung-Schritte
 - MV1: Person wird kotnrolliert und kann angenommen oder abgelehnt werden. Wenn abgelehnt endet der Onboarding Prozess hier.
@@ -39,7 +41,7 @@ In dem Ablaufdiagramm sind alle Schritte durch runde schwarze Icons und entsprec
 
 ### Mails
 - M1: Diese Mail bittet das neue Mitglied darum die email Adresse zu bestätigen und ein Passwort für ein Login zu setzen.
-- M2: Neues Mitglied erhält Mail, um mitzuteilen das es eine neue rechnung gibt, die bezahlt werdne sollte.
+- M2: Neues Mitglied erhält Mail mit einem Link zur Rechnung, um mitzuteilen das es eine neue Rechnung gibt, die bezahlt werden sollte.
 - M3: Diese Mail informiert das neue Mitglied, das es erfolgreich als Mitglied aufgenommen wurde.
 
 ### Bedingungen
