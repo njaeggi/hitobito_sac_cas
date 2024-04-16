@@ -59,7 +59,7 @@ module SacCas::FilterNavigation::People
     @qualification_kind_ids ||= QualificationKind
       .joins(:translations)
       .where.not(validity: nil)
-      .where('qualification_kind_translations.label LIKE "SAC Tourenleiter%"')
+      .where("qualification_kind_translations.label ILIKE 'SAC Tourenleiter%'")
       .pluck(:id)
-  end
+  end  
 end

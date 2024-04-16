@@ -36,7 +36,7 @@ class Groups::SektionSelfRegistrationLink
     @neuanmeldungen_sektion_id ||=
       @sektion
       .children
-      .find_by(type: Group::SektionsNeuanmeldungenSektion)
+      .find_by(type: "Group::SektionsNeuanmeldungenSektion")
       .try(:id)
   end
 end
