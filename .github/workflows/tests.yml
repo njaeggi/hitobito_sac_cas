@@ -26,12 +26,12 @@ on:
 
 jobs:
   wagon_tests:
-    uses: hitobito/hitobito/.github/workflows/wagon-tests.yml@sac-master
+    uses: njaeggi/hitobito/.github/workflows/wagon-tests.yml@master
     with:
       wagon_repository: ${{ github.event.repository.name }}
       wagon_dependency_repository: hitobito_youth
-      core_ref: ${{ inputs.core_ref || 'sac-master' }}
-      wagon_dependency_ref: ${{ inputs.wagon_dependency_ref || 'sac-master' }}
+      core_ref: ${{ inputs.core_ref || 'feature/postgresql-fulltext-search' }}
+      wagon_dependency_ref: ${{ inputs.wagon_dependency_ref || 'feature/postgresql-fulltext-search' }}
     secrets:
       HEARTBEAT_URL: ${{ secrets.HEARTBEAT_URL }}
       HEARTBEAT_TOKEN: ${{ secrets.HEARTBEAT_TOKEN }}
